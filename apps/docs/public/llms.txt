@@ -1,0 +1,26 @@
+# Handwriting AI API
+
+> Create a handwritten JPEG, PNG, or PDF in one request. The response returns short-lived download links.
+
+## Docs
+
+- [Overview](https://docs.handwriting-ai.com/): What the API returns.
+- [Quickstart](https://docs.handwriting-ai.com/quickstart): First JPEG and first PDF.
+- [Authentication](https://docs.handwriting-ai.com/authentication): API keys and download links.
+- [Render](https://docs.handwriting-ai.com/renders): Images, PDFs, and the response fields.
+- [Page setup](https://docs.handwriting-ai.com/page-setup): Page size, paper, margins, and DPI.
+- [Handwriting](https://docs.handwriting-ai.com/handwriting): Fonts, ink, realism, and seed.
+- [Fonts](https://docs.handwriting-ai.com/fonts): font_id catalog.
+- [Request and response](https://docs.handwriting-ai.com/reference): Every field.
+- [Limits](https://docs.handwriting-ai.com/limits): Pages, characters, rate, and link lifetime.
+- [Errors](https://docs.handwriting-ai.com/errors): Status codes and error bodies.
+- [Node.js client](https://docs.handwriting-ai.com/sdk): The handwriting-ai package.
+
+## OpenAPI
+
+- [openapi.yaml](https://docs.handwriting-ai.com/openapi.yaml)
+
+## Product
+
+- [Handwriting AI](https://handwriting-ai.com)
+- [Request API access](https://handwriting-ai.com/api-access)

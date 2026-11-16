@@ -1,0 +1,692 @@
+openapi: 3.1.0
+info:
+  title: Handwriting AI API
+  version: 1.0.0
+  description: |
+    Create a handwritten JPEG, PNG, or PDF in one request.
+
+    The response is JSON. File bytes are not included. Download each result from its short-lived `url` before `expires_at`.
+
+    Full guide: https://docs.handwriting-ai.com
+  contact:
+    name: Handwriting AI
+    email: support@handwriting-ai.com
+    url: https://handwriting-ai.com/api-access
+  license:
+    name: Proprietary
+    url: https://handwriting-ai.com/terms
+servers:
+  - url: https://api.handwriting-ai.com
+    description: Production
+tags:
+  - name: Service
+  - name: Renders
+paths:
+  /v1/status:
+    get:
+      tags: [Service]
+      operationId: getStatus
+      summary: Service status
+      description: Reports that the API is reachable and which contract version it serves. No API key is required.
+      security: []
+      responses:
+        "200":
+          description: The service is reachable.
+          headers:
+            X-Request-ID:
+              $ref: "#/components/headers/XRequestId"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/StatusResponse"
+              example:
+                status: ok
+                version: "1.0.0"
+  /v1/renders:
+    post:
+      tags: [Renders]
+      operationId: createRender
+      summary: Create a handwritten page
+      description: |
+        Renders the text with the page and handwriting settings in the body.
+
+        The call stays open until the files are ready. The JSON response contains download links, not file bytes. Each link expires at `expires_at`, 15 minutes after the response.
+
+        `output.format` chooses the files:
+
+        - `jpeg` or `png`: one URL per page in `pages`
+        - `pdf`: one URL for the whole document in `file`
+
+        JPEG and PNG accept up to 8 pages and 20,000 characters. PDF accepts up to 40 pages and 40,000 characters. Text that needs more pages returns `page_limit_exceeded`.
+      security:
+        - bearerAuth: []
+      parameters:
+        - $ref: "#/components/parameters/XRequestId"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/RenderRequest"
+            examples:
+              jpeg:
+                summary: One ruled page
+                value:
+                  text: Thank you for your order.
+                  font_id: caveat
+                  font_size_pt: 22
+                  page_size: a4
+                  paper: college-ruled
+                  ink: "#244f9e"
+                  realism: natural
+                  output:
+                    format: jpeg
+                    dpi: 150
+              pdf:
+                summary: A multi-page letter
+                value:
+                  text: "Dear Emma,\n\nThank you for trusting us with the repair."
+                  font_id: patrick-hand
+                  page_size: letter
+                  paper: plain
+                  output:
+                    format: pdf
+                    dpi: 300
+      responses:
+        "200":
+          description: The files are ready to download.
+          headers:
+            X-Request-ID:
+              $ref: "#/components/headers/XRequestId"
+            X-RateLimit-Limit:
+              $ref: "#/components/headers/RateLimitLimit"
+            X-RateLimit-Remaining:
+              $ref: "#/components/headers/RateLimitRemaining"
+            X-RateLimit-Reset:
+              $ref: "#/components/headers/RateLimitReset"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/RenderResponse"
+              examples:
+                jpeg:
+                  summary: JPEG pages
+                  value:
+                    request_id: req_01h2abc
+                    seed: 18492011
+                    font_id: caveat
+                    font_size_pt: 22
+                    page_count: 1
+                    unsupported_characters: []
+                    expires_at: "2026-11-11T09:15:00Z"
+                    pages:
+                      - page: 1
+                        width: 1240
+                        height: 1754
+                        media_type: image/jpeg
+                        url: https://files.handwriting-ai.com/r/req_01h2abc/page-1.jpg?sig=example
+                pdf:
+                  summary: One PDF
+                  value:
+                    request_id: req_01h2def
+                    seed: 90210
+                    font_id: patrick-hand
+                    font_size_pt: 22
+                    page_count: 2
+                    unsupported_characters: []
+                    expires_at: "2026-11-11T09:15:00Z"
+                    file:
+                      media_type: application/pdf
+                      url: https://files.handwriting-ai.com/r/req_01h2def/letter.pdf?sig=example
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "403":
+          $ref: "#/components/responses/Forbidden"
+        "404":
+          $ref: "#/components/responses/FontNotFound"
+        "422":
+          $ref: "#/components/responses/Unprocessable"
+        "429":
+          $ref: "#/components/responses/Limited"
+        "500":
+          description: The render did not finish. No page allowance is consumed.
+          headers:
+            X-Request-ID:
+              $ref: "#/components/headers/XRequestId"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+              example:
+                error:
+                  code: server_error
+                  message: The page could not be created. Try the request again.
+                  request_id: req_01h2err
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: "API key issued for your account. Send `Authorization: Bearer hw_live_...`."
+  parameters:
+    XRequestId:
+      name: X-Request-ID
+      in: header
+      required: false
+      schema:
+        type: string
+        minLength: 1
+        maxLength: 128
+      description: Your id for this call. The response echoes it. If you omit it, the server creates one.
+  headers:
+    XRequestId:
+      description: The request id, either the one you sent or one created by the server.
+      schema:
+        type: string
+    RateLimitLimit:
+      description: Requests allowed in the current one-minute window.
+      schema:
+        type: integer
+    RateLimitRemaining:
+      description: Requests left in the current one-minute window.
+      schema:
+        type: integer
+    RateLimitReset:
+      description: Unix time, in seconds, when the one-minute window resets.
+      schema:
+        type: integer
+  responses:
+    Unauthorized:
+      description: The API key is missing or not recognized.
+      headers:
+        X-Request-ID:
+          $ref: "#/components/headers/XRequestId"
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/ErrorResponse"
+          example:
+            error:
+              code: unauthorized
+              message: Provide a valid API key in the Authorization header.
+              request_id: req_01h2err
+    Forbidden:
+      description: The key is valid, and this render or setting is not enabled for it.
+      headers:
+        X-Request-ID:
+          $ref: "#/components/headers/XRequestId"
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/ErrorResponse"
+          examples:
+            access:
+              value:
+                error:
+                  code: access_not_enabled
+                  message: Rendering is not enabled for this key. Email support@handwriting-ai.com.
+                  request_id: req_01h2err
+            feature:
+              value:
+                error:
+                  code: feature_not_enabled
+                  message: This key cannot use the lifelike handwriting setting.
+                  request_id: req_01h2err
+    FontNotFound:
+      description: "font_id is not in the font catalog."
+      headers:
+        X-Request-ID:
+          $ref: "#/components/headers/XRequestId"
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/ErrorResponse"
+          example:
+            error:
+              code: font_not_found
+              message: Unknown font_id.
+              request_id: req_01h2err
+              details:
+                - field: font_id
+                  code: unknown
+    Unprocessable:
+      description: The body is invalid, or the text needs more pages than this format allows.
+      headers:
+        X-Request-ID:
+          $ref: "#/components/headers/XRequestId"
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/ErrorResponse"
+          examples:
+            validation:
+              value:
+                error:
+                  code: validation_error
+                  message: JPEG output uses a paper background.
+                  request_id: req_01h2err
+                  details:
+                    - field: output.background
+                      code: incompatible
+            pages:
+              value:
+                error:
+                  code: page_limit_exceeded
+                  message: This JPEG can contain at most 8 pages. Shorten the text or request a PDF.
+                  request_id: req_01h2err
+                  details:
+                    - field: text
+                      code: too_many_pages
+    Limited:
+      description: The key exceeded its request rate or its monthly page allowance.
+      headers:
+        X-Request-ID:
+          $ref: "#/components/headers/XRequestId"
+        Retry-After:
+          description: Seconds to wait. Present when `code` is `rate_limited`.
+          schema:
+            type: integer
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/ErrorResponse"
+          examples:
+            rate:
+              value:
+                error:
+                  code: rate_limited
+                  message: Too many requests. Try again after the Retry-After interval.
+                  request_id: req_01h2err
+                  retry_after: 12
+            quota:
+              value:
+                error:
+                  code: quota_exceeded
+                  message: This key has used its page allowance for the current period.
+                  request_id: req_01h2err
+                  limit: 1000
+                  used: 1000
+                  reset_at: "2026-12-01T00:00:00Z"
+  schemas:
+    StatusResponse:
+      type: object
+      additionalProperties: false
+      required: [status, version]
+      properties:
+        status:
+          type: string
+          const: ok
+        version:
+          type: string
+          description: API contract version.
+          examples: ["1.0.0"]
+    RenderRequest:
+      type: object
+      additionalProperties: false
+      required: [text]
+      properties:
+        text:
+          type: string
+          minLength: 1
+          maxLength: 40000
+          description: |
+            Plain text to write. A line break is `\n`. A blank line starts a new paragraph.
+            JPEG and PNG accept 20,000 characters. PDF accepts 40,000.
+        font_id:
+          type: string
+          default: caveat
+          pattern: "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+          maxLength: 64
+          description: Handwriting id from the font catalog. A private FontKind AI font uses the id enabled on the key.
+        font_size_pt:
+          description: Body size in points, or `auto` to fit the text within the page limit.
+          default: 22
+          oneOf:
+            - type: number
+              minimum: 8
+              maximum: 72
+            - type: string
+              const: auto
+        max_font_size_pt:
+          type: number
+          minimum: 8
+          maximum: 72
+          default: 36
+          description: Largest size used when `font_size_pt` is `auto`.
+        page_size:
+          $ref: "#/components/schemas/PageSize"
+        orientation:
+          type: string
+          enum: [portrait, landscape]
+          default: portrait
+        paper:
+          $ref: "#/components/schemas/Paper"
+        tint:
+          type: string
+          enum: [white, cream, aged, dark]
+          default: white
+          description: Paper color. Ignored when `output.background` is `transparent`.
+        grid_size:
+          type: string
+          enum: [small, large]
+          default: small
+          description: Cell pitch for `grid` and `dots` papers. `small` is about 5 mm. `large` is about 10 mm.
+        alignment:
+          type: string
+          enum: [left, center, right]
+          default: left
+        direction:
+          type: string
+          enum: [auto, ltr, rtl]
+          default: auto
+          description: Writing direction. `auto` follows the text. Use `rtl` for an Arabic page.
+        margins_mm:
+          $ref: "#/components/schemas/MarginsMm"
+        line_height:
+          type: number
+          minimum: 0.8
+          maximum: 3
+          default: 1.3
+          description: Line spacing as a multiple of the font size.
+        paragraph_spacing_mm:
+          type: number
+          minimum: 0
+          maximum: 30
+          default: 0
+          description: Extra space after a paragraph, in millimetres.
+        letter_spacing_mm:
+          type: number
+          minimum: -0.5
+          maximum: 3
+          default: 0
+          description: Extra space between letters, in millimetres.
+        word_spacing_mm:
+          type: number
+          minimum: 0
+          maximum: 10
+          default: 0
+          description: Extra space between words, in millimetres.
+        pen_weight:
+          type: number
+          minimum: 0
+          maximum: 5
+          default: 1
+          description: Stroke weight. `1` is the normal pen.
+        ink:
+          type: string
+          default: "#000000"
+          pattern: "^#[0-9a-fA-F]{6}$"
+          description: Ink color as a six-digit hex color.
+        realism:
+          $ref: "#/components/schemas/Realism"
+        realism_advanced:
+          $ref: "#/components/schemas/RealismAdvanced"
+        page_look:
+          $ref: "#/components/schemas/PageLook"
+        seed:
+          type: integer
+          minimum: 0
+          maximum: 2147483647
+          description: Repeats the same handwriting variation. Omit it to get a new variation. The response always returns the seed that was used.
+        output:
+          $ref: "#/components/schemas/Output"
+    PageSize:
+      type: string
+      default: a4
+      enum:
+        - letter
+        - legal
+        - tabloid
+        - a3
+        - a4
+        - a5
+        - a6
+        - b5
+        - india-18x24
+        - postcard-4x6
+        - card-5x7
+        - square
+      description: Physical page size. `landscape` swaps the width and height.
+    Paper:
+      type: string
+      default: plain
+      description: |
+        Page ruling. `plain`, `college-ruled`, and `wide-ruled` are available on every key.
+        The other papers are enabled per key.
+      enum:
+        - plain
+        - college-ruled
+        - wide-ruled
+        - feint-ruled
+        - grid
+        - squared-10mm
+        - india-school-single-line
+        - india-school-square
+        - india-college-single-line
+        - lineatur-25
+        - lineatur-27
+        - lineatur-28
+        - cis-school-grid
+        - cis-school-line
+        - dots
+        - memo
+    MarginsMm:
+      type: object
+      additionalProperties: false
+      description: Page margins in millimetres. Omit the object to use the writing margins of the selected paper.
+      required: [top, right, bottom, left]
+      properties:
+        top:
+          type: number
+          minimum: 0
+          maximum: 80
+        right:
+          type: number
+          minimum: 0
+          maximum: 80
+        bottom:
+          type: number
+          minimum: 0
+          maximum: 80
+        left:
+          type: number
+          minimum: 0
+          maximum: 80
+    Realism:
+      type: string
+      default: natural
+      enum: [off, subtle, natural, realistic, lifelike]
+      description: |
+        Handwriting variation. `off`, `subtle`, and `natural` are available on every key.
+        `realistic` and `lifelike` are enabled per key.
+        Fields in `realism_advanced` replace the matching preset values.
+    RealismAdvanced:
+      type: object
+      additionalProperties: false
+      description: Slider overrides from 0 to 100, applied on top of `realism`.
+      properties:
+        word_placement:
+          type: integer
+          minimum: 0
+          maximum: 100
+        line_starts:
+          type: integer
+          minimum: 0
+          maximum: 100
+        line_spacing:
+          type: integer
+          minimum: 0
+          maximum: 100
+        ink_flow:
+          type: integer
+          minimum: 0
+          maximum: 100
+          description: Ink pressure variation. Enabled per key.
+        ink_texture:
+          type: integer
+          minimum: 0
+          maximum: 100
+          description: Dry-ink texture. Enabled per key.
+        letterform_variation:
+          type: integer
+          minimum: 0
+          maximum: 100
+          description: Alternate letter shapes. Enabled per key.
+        tilt_each_letter:
+          type: boolean
+          description: Tilt letters while keeping a connected word joined. Enabled per key.
+    PageLook:
+      type: object
+      additionalProperties: false
+      description: Paper texture, shading, and focus. Enabled per key. Ignored for a transparent PNG.
+      properties:
+        paper_texture:
+          type: integer
+          minimum: 0
+          maximum: 100
+          default: 0
+        paper_texture_style:
+          type: string
+          enum: [fine, fiber, laid]
+          default: fine
+        shading:
+          type: integer
+          minimum: 0
+          maximum: 100
+          default: 0
+        soft_focus:
+          type: integer
+          minimum: 0
+          maximum: 100
+          default: 0
+    Output:
+      type: object
+      additionalProperties: false
+      properties:
+        format:
+          type: string
+          enum: [jpeg, png, pdf]
+          default: jpeg
+        dpi:
+          type: integer
+          enum: [150, 300, 600]
+          default: 150
+          description: Pixel density. The physical page size stays the same.
+        background:
+          type: string
+          enum: [paper, transparent]
+          default: paper
+          description: "`transparent` is available for PNG only. JPEG and PDF use the paper."
+    RenderResponse:
+      type: object
+      additionalProperties: false
+      required: [request_id, seed, font_id, font_size_pt, page_count, unsupported_characters, expires_at]
+      properties:
+        request_id:
+          type: string
+        seed:
+          type: integer
+        font_id:
+          type: string
+        font_size_pt:
+          type: number
+          description: Size actually used, including the size chosen for `auto`.
+        page_count:
+          type: integer
+          minimum: 1
+        unsupported_characters:
+          type: array
+          items:
+            type: string
+            minLength: 1
+          description: Characters the font could not draw.
+        expires_at:
+          type: string
+          format: date-time
+          description: When every URL in this response stops working.
+        pages:
+          type: array
+          description: Present for JPEG and PNG. One file per page, in order.
+          items:
+            $ref: "#/components/schemas/PageFile"
+        file:
+          $ref: "#/components/schemas/DocumentFile"
+    PageFile:
+      type: object
+      additionalProperties: false
+      required: [page, width, height, media_type, url]
+      properties:
+        page:
+          type: integer
+          minimum: 1
+        width:
+          type: integer
+          description: Pixel width of this page.
+        height:
+          type: integer
+          description: Pixel height of this page.
+        media_type:
+          type: string
+          enum: [image/jpeg, image/png]
+        url:
+          type: string
+          format: uri
+    DocumentFile:
+      type: object
+      additionalProperties: false
+      required: [media_type, url]
+      description: Present for PDF. One file contains every page.
+      properties:
+        media_type:
+          type: string
+          const: application/pdf
+        url:
+          type: string
+          format: uri
+    ErrorResponse:
+      type: object
+      additionalProperties: false
+      required: [error]
+      properties:
+        error:
+          type: object
+          additionalProperties: false
+          required: [code, message]
+          properties:
+            code:
+              type: string
+              enum:
+                - unauthorized
+                - access_not_enabled
+                - feature_not_enabled
+                - font_not_found
+                - validation_error
+                - page_limit_exceeded
+                - rate_limited
+                - quota_exceeded
+                - server_error
+            message:
+              type: string
+            request_id:
+              type: string
+            details:
+              type: array
+              items:
+                type: object
+                additionalProperties: false
+                required: [code]
+                properties:
+                  field:
+                    type: string
+                  code:
+                    type: string
+            limit:
+              type: integer
+            used:
+              type: integer
+            reset_at:
+              type: string
+              format: date-time
+            retry_after:
+              type: integer
+              description: Seconds to wait. Also sent as the `Retry-After` header for `rate_limited`.

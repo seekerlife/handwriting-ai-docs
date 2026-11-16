@@ -1,0 +1,18 @@
+:root {
+  --vp-c-brand-1: #9a4e32;
+  --vp-c-brand-2: #7c3b24;
+  --vp-c-brand-3: #5e2c1a;
+  --vp-c-brand-soft: rgba(154, 78, 50, 0.14);
+  --vp-nav-height: 56px;
+}
+
+.vp-doc h1 {
+  font-size: 34px;
+  letter-spacing: -0.02em;
+}
+
+.vp-doc table {
+  display: table;
+  width: 100%;
+  font-size: 14px;
+}

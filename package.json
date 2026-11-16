@@ -1,0 +1,15 @@
+{
+  "name": "handwriting-docs",
+  "private": true,
+  "packageManager": "pnpm@11.10.0",
+  "scripts": {
+    "dev": "pnpm --filter @handwriting-ai/docs dev",
+    "build": "pnpm --filter handwriting-ai build && pnpm --filter @handwriting-ai/docs build",
+    "test": "pnpm --filter handwriting-ai test",
+    "check": "node scripts/check-openapi.mjs && pnpm test && pnpm --filter @handwriting-ai/docs build",
+    "fonts": "node scripts/render-font-page.mjs"
+  },
+  "devDependencies": {
+    "yaml": "^2.8.1"
+  }
+}

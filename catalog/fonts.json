@@ -1,0 +1,979 @@
+[
+  {
+    "id": "caveat",
+    "name": "Caveat",
+    "access": "included",
+    "hand": "print",
+    "scripts": [
+      "Latin"
+    ]
+  },
+  {
+    "id": "patrick-hand",
+    "name": "Patrick Hand",
+    "access": "included",
+    "hand": "print",
+    "scripts": [
+      "Latin"
+    ]
+  },
+  {
+    "id": "kalam",
+    "name": "Kalam",
+    "access": "included",
+    "hand": "print",
+    "scripts": [
+      "Latin",
+      "Devanagari"
+    ]
+  },
+  {
+    "id": "coming-soon",
+    "name": "Coming Soon",
+    "access": "included",
+    "hand": "print",
+    "scripts": [
+      "Latin"
+    ]
+  },
+  {
+    "id": "dancing-script",
+    "name": "Dancing Script",
+    "access": "included",
+    "hand": "connected",
+    "scripts": [
+      "Latin"
+    ]
+  },
+  {
+    "id": "indie-flower",
+    "name": "Indie Flower",
+    "access": "included",
+    "hand": "print",
+    "scripts": [
+      "Latin"
+    ]
+  },
+  {
+    "id": "andika",
+    "name": "Andika",
+    "access": "included",
+    "hand": "print",
+    "scripts": [
+      "Latin"
+    ]
+  },
+  {
+    "id": "playwrite-us-modern",
+    "name": "Playwrite US Modern",
+    "access": "included",
+    "hand": "connected",
+    "scripts": [
+      "Latin"
+    ]
+  },
+  {
+    "id": "playwrite-us-trad",
+    "name": "Playwrite US Trad",
+    "access": "included",
+    "hand": "connected",
+    "scripts": [
+      "Latin"
+    ]
+  },
+  {
+    "id": "schoolbell",
+    "name": "Schoolbell",
+    "access": "included",
+    "hand": "print",
+    "scripts": [
+      "Latin"
+    ]
+  },
+  {
+    "id": "architects-daughter",
+    "name": "Architects Daughter",
+    "access": "on_request",
+    "hand": "print",
+    "scripts": [
+      "Latin"
+    ]
+  },
+  {
+    "id": "gochi-hand",
+    "name": "Gochi Hand",
+    "access": "on_request",
+    "hand": "print",
+    "scripts": [
+      "Latin"
+    ]
+  },
+  {
+    "id": "shadows-into-light",
+    "name": "Shadows Into Light",
+    "access": "on_request",
+    "hand": "print",
+    "scripts": [
+      "Latin"
+    ]
+  },
+  {
+    "id": "bad-script",
+    "name": "Bad Script",
+    "access": "on_request",
+    "hand": "print",
+    "scripts": [
+      "Cyrillic",
+      "Latin"
+    ]
+  },
+  {
+    "id": "reenie-beanie",
+    "name": "Reenie Beanie",
+    "access": "on_request",
+    "hand": "print",
+    "scripts": [
+      "Latin"
+    ]
+  },
+  {
+    "id": "permanent-marker",
+    "name": "Permanent Marker",
+    "access": "on_request",
+    "hand": "print",
+    "scripts": [
+      "Latin"
+    ]
+  },
+  {
+    "id": "gloria-hallelujah",
+    "name": "Gloria Hallelujah",
+    "access": "on_request",
+    "hand": "print",
+    "scripts": [
+      "Latin"
+    ]
+  },
+  {
+    "id": "cookie",
+    "name": "Cookie",
+    "access": "on_request",
+    "hand": "connected",
+    "scripts": [
+      "Latin"
+    ]
+  },
+  {
+    "id": "pacifico",
+    "name": "Pacifico",
+    "access": "on_request",
+    "hand": "connected",
+    "scripts": [
+      "Latin"
+    ]
+  },
+  {
+    "id": "covered-by-your-grace",
+    "name": "Covered By Your Grace",
+    "access": "on_request",
+    "hand": "print",
+    "scripts": [
+      "Latin"
+    ]
+  },
+  {
+    "id": "just-me-again-down-here",
+    "name": "Just Me Again Down Here",
+    "access": "on_request",
+    "hand": "print",
+    "scripts": [
+      "Latin"
+    ]
+  },
+  {
+    "id": "beth-ellen",
+    "name": "Beth Ellen",
+    "access": "on_request",
+    "hand": "print",
+    "scripts": [
+      "Latin"
+    ]
+  },
+  {
+    "id": "fuzzy-bubbles",
+    "name": "Fuzzy Bubbles",
+    "access": "on_request",
+    "hand": "print",
+    "scripts": [
+      "Latin"
+    ]
+  },
+  {
+    "id": "handlee",
+    "name": "Handlee",
+    "access": "on_request",
+    "hand": "print",
+    "scripts": [
+      "Latin"
+    ]
+  },
+  {
+    "id": "neucha",
+    "name": "Neucha",
+    "access": "on_request",
+    "hand": "print",
+    "scripts": [
+      "Cyrillic",
+      "Latin"
+    ]
+  },
+  {
+    "id": "give-you-glory",
+    "name": "Give You Glory",
+    "access": "on_request",
+    "hand": "print",
+    "scripts": [
+      "Latin"
+    ]
+  },
+  {
+    "id": "nothing-you-could-do",
+    "name": "Nothing You Could Do",
+    "access": "on_request",
+    "hand": "print",
+    "scripts": [
+      "Latin"
+    ]
+  },
+  {
+    "id": "delius",
+    "name": "Delius",
+    "access": "on_request",
+    "hand": "print",
+    "scripts": [
+      "Latin"
+    ]
+  },
+  {
+    "id": "sue-ellen-francisco",
+    "name": "Sue Ellen Francisco",
+    "access": "on_request",
+    "hand": "print",
+    "scripts": [
+      "Latin"
+    ]
+  },
+  {
+    "id": "just-another-hand",
+    "name": "Just Another Hand",
+    "access": "on_request",
+    "hand": "print",
+    "scripts": [
+      "Latin"
+    ]
+  },
+  {
+    "id": "waiting-for-the-sunrise",
+    "name": "Waiting for the Sunrise",
+    "access": "on_request",
+    "hand": "print",
+    "scripts": [
+      "Latin"
+    ]
+  },
+  {
+    "id": "the-girl-next-door",
+    "name": "The Girl Next Door",
+    "access": "on_request",
+    "hand": "print",
+    "scripts": [
+      "Latin"
+    ]
+  },
+  {
+    "id": "annie-use-your-telescope",
+    "name": "Annie Use Your Telescope",
+    "access": "on_request",
+    "hand": "print",
+    "scripts": [
+      "Latin"
+    ]
+  },
+  {
+    "id": "walter-turncoat",
+    "name": "Walter Turncoat",
+    "access": "on_request",
+    "hand": "print",
+    "scripts": [
+      "Latin"
+    ]
+  },
+  {
+    "id": "short-stack",
+    "name": "Short Stack",
+    "access": "on_request",
+    "hand": "print",
+    "scripts": [
+      "Latin"
+    ]
+  },
+  {
+    "id": "delicious-handrawn",
+    "name": "Delicious Handrawn",
+    "access": "on_request",
+    "hand": "print",
+    "scripts": [
+      "Latin"
+    ]
+  },
+  {
+    "id": "mynerve",
+    "name": "Mynerve",
+    "access": "on_request",
+    "hand": "print",
+    "scripts": [
+      "Latin"
+    ]
+  },
+  {
+    "id": "pangolin",
+    "name": "Pangolin",
+    "access": "on_request",
+    "hand": "print",
+    "scripts": [
+      "Cyrillic",
+      "Latin"
+    ]
+  },
+  {
+    "id": "amatic-sc",
+    "name": "Amatic SC",
+    "access": "on_request",
+    "hand": "print",
+    "scripts": [
+      "Latin"
+    ]
+  },
+  {
+    "id": "caveat-brush",
+    "name": "Caveat Brush",
+    "access": "on_request",
+    "hand": "print",
+    "scripts": [
+      "Latin"
+    ]
+  },
+  {
+    "id": "crafty-girls",
+    "name": "Crafty Girls",
+    "access": "on_request",
+    "hand": "print",
+    "scripts": [
+      "Latin"
+    ]
+  },
+  {
+    "id": "shantell-sans",
+    "name": "Shantell Sans",
+    "access": "on_request",
+    "hand": "print",
+    "scripts": [
+      "Latin"
+    ]
+  },
+  {
+    "id": "balsamiq-sans",
+    "name": "Balsamiq Sans",
+    "access": "on_request",
+    "hand": "print",
+    "scripts": [
+      "Latin"
+    ]
+  },
+  {
+    "id": "playwrite-fr-trad",
+    "name": "Playwrite FR Trad",
+    "access": "on_request",
+    "hand": "connected",
+    "scripts": [
+      "Latin"
+    ]
+  },
+  {
+    "id": "playwrite-de-grund",
+    "name": "Playwrite DE Grund",
+    "access": "on_request",
+    "hand": "print",
+    "scripts": [
+      "Latin"
+    ]
+  },
+  {
+    "id": "playwrite-de-la",
+    "name": "Playwrite DE LA",
+    "access": "on_request",
+    "hand": "connected",
+    "scripts": [
+      "Latin"
+    ]
+  },
+  {
+    "id": "playwrite-es",
+    "name": "Playwrite ES",
+    "access": "on_request",
+    "hand": "connected",
+    "scripts": [
+      "Latin"
+    ]
+  },
+  {
+    "id": "playwrite-gb-j",
+    "name": "Playwrite GB J",
+    "access": "on_request",
+    "hand": "connected",
+    "scripts": [
+      "Latin"
+    ]
+  },
+  {
+    "id": "playwrite-it-trad",
+    "name": "Playwrite IT Trad",
+    "access": "on_request",
+    "hand": "connected",
+    "scripts": [
+      "Latin"
+    ]
+  },
+  {
+    "id": "playwrite-pt",
+    "name": "Playwrite PT",
+    "access": "on_request",
+    "hand": "connected",
+    "scripts": [
+      "Latin"
+    ]
+  },
+  {
+    "id": "nanum-pen-script",
+    "name": "Nanum Pen Script",
+    "access": "on_request",
+    "hand": "print",
+    "scripts": [
+      "Korean"
+    ]
+  },
+  {
+    "id": "la-belle-aurore",
+    "name": "La Belle Aurore",
+    "access": "on_request",
+    "hand": "print",
+    "scripts": [
+      "Latin"
+    ]
+  },
+  {
+    "id": "rock-salt",
+    "name": "Rock Salt",
+    "access": "on_request",
+    "hand": "print",
+    "scripts": [
+      "Latin"
+    ]
+  },
+  {
+    "id": "sriracha",
+    "name": "Sriracha",
+    "access": "on_request",
+    "hand": "print",
+    "scripts": [
+      "Latin"
+    ]
+  },
+  {
+    "id": "homemade-apple",
+    "name": "Homemade Apple",
+    "access": "on_request",
+    "hand": "connected",
+    "scripts": [
+      "Latin"
+    ]
+  },
+  {
+    "id": "sacramento",
+    "name": "Sacramento",
+    "access": "on_request",
+    "hand": "connected",
+    "scripts": [
+      "Latin"
+    ]
+  },
+  {
+    "id": "great-vibes",
+    "name": "Great Vibes",
+    "access": "on_request",
+    "hand": "connected",
+    "scripts": [
+      "Latin"
+    ]
+  },
+  {
+    "id": "yellowtail",
+    "name": "Yellowtail",
+    "access": "on_request",
+    "hand": "connected",
+    "scripts": [
+      "Latin"
+    ]
+  },
+  {
+    "id": "zeyada",
+    "name": "Zeyada",
+    "access": "on_request",
+    "hand": "connected",
+    "scripts": [
+      "Latin"
+    ]
+  },
+  {
+    "id": "tangerine",
+    "name": "Tangerine",
+    "access": "on_request",
+    "hand": "connected",
+    "scripts": [
+      "Latin"
+    ]
+  },
+  {
+    "id": "cedarville-cursive",
+    "name": "Cedarville Cursive",
+    "access": "on_request",
+    "hand": "connected",
+    "scripts": [
+      "Latin"
+    ]
+  },
+  {
+    "id": "loved-by-the-king",
+    "name": "Loved by the King",
+    "access": "on_request",
+    "hand": "print",
+    "scripts": [
+      "Latin"
+    ]
+  },
+  {
+    "id": "montez",
+    "name": "Montez",
+    "access": "on_request",
+    "hand": "connected",
+    "scripts": [
+      "Latin"
+    ]
+  },
+  {
+    "id": "petit-formal-script",
+    "name": "Petit Formal Script",
+    "access": "on_request",
+    "hand": "connected",
+    "scripts": [
+      "Latin"
+    ]
+  },
+  {
+    "id": "qwigley",
+    "name": "Qwigley",
+    "access": "on_request",
+    "hand": "connected",
+    "scripts": [
+      "Latin"
+    ]
+  },
+  {
+    "id": "kristi",
+    "name": "Kristi",
+    "access": "on_request",
+    "hand": "connected",
+    "scripts": [
+      "Latin"
+    ]
+  },
+  {
+    "id": "marck-script",
+    "name": "Marck Script",
+    "access": "on_request",
+    "hand": "connected",
+    "scripts": [
+      "Cyrillic",
+      "Latin"
+    ]
+  },
+  {
+    "id": "over-the-rainbow",
+    "name": "Over the Rainbow",
+    "access": "on_request",
+    "hand": "connected",
+    "scripts": [
+      "Latin"
+    ]
+  },
+  {
+    "id": "nanum-brush-script",
+    "name": "Nanum Brush Script",
+    "access": "on_request",
+    "hand": "print",
+    "scripts": [
+      "Korean"
+    ]
+  },
+  {
+    "id": "shadows-into-light-two",
+    "name": "Shadows Into Light Two",
+    "access": "on_request",
+    "hand": "print",
+    "scripts": [
+      "Latin"
+    ]
+  },
+  {
+    "id": "satisfy",
+    "name": "Satisfy",
+    "access": "on_request",
+    "hand": "connected",
+    "scripts": [
+      "Latin"
+    ]
+  },
+  {
+    "id": "courgette",
+    "name": "Courgette",
+    "access": "on_request",
+    "hand": "connected",
+    "scripts": [
+      "Latin"
+    ]
+  },
+  {
+    "id": "kaushan-script",
+    "name": "Kaushan Script",
+    "access": "on_request",
+    "hand": "connected",
+    "scripts": [
+      "Latin"
+    ]
+  },
+  {
+    "id": "allura",
+    "name": "Allura",
+    "access": "on_request",
+    "hand": "connected",
+    "scripts": [
+      "Latin"
+    ]
+  },
+  {
+    "id": "alex-brush",
+    "name": "Alex Brush",
+    "access": "on_request",
+    "hand": "connected",
+    "scripts": [
+      "Latin"
+    ]
+  },
+  {
+    "id": "parisienne",
+    "name": "Parisienne",
+    "access": "on_request",
+    "hand": "connected",
+    "scripts": [
+      "Latin"
+    ]
+  },
+  {
+    "id": "italianno",
+    "name": "Italianno",
+    "access": "on_request",
+    "hand": "connected",
+    "scripts": [
+      "Latin"
+    ]
+  },
+  {
+    "id": "damion",
+    "name": "Damion",
+    "access": "on_request",
+    "hand": "connected",
+    "scripts": [
+      "Latin"
+    ]
+  },
+  {
+    "id": "yesteryear",
+    "name": "Yesteryear",
+    "access": "on_request",
+    "hand": "connected",
+    "scripts": [
+      "Latin"
+    ]
+  },
+  {
+    "id": "mr-dafoe",
+    "name": "Mr Dafoe",
+    "access": "on_request",
+    "hand": "connected",
+    "scripts": [
+      "Latin"
+    ]
+  },
+  {
+    "id": "pinyon-script",
+    "name": "Pinyon Script",
+    "access": "on_request",
+    "hand": "connected",
+    "scripts": [
+      "Latin"
+    ]
+  },
+  {
+    "id": "grand-hotel",
+    "name": "Grand Hotel",
+    "access": "on_request",
+    "hand": "connected",
+    "scripts": [
+      "Latin"
+    ]
+  },
+  {
+    "id": "calligraffitti",
+    "name": "Calligraffitti",
+    "access": "on_request",
+    "hand": "print",
+    "scripts": [
+      "Latin"
+    ]
+  },
+  {
+    "id": "mansalva",
+    "name": "Mansalva",
+    "access": "on_request",
+    "hand": "print",
+    "scripts": [
+      "Latin"
+    ]
+  },
+  {
+    "id": "grape-nuts",
+    "name": "Grape Nuts",
+    "access": "on_request",
+    "hand": "print",
+    "scripts": [
+      "Latin"
+    ]
+  },
+  {
+    "id": "comforter",
+    "name": "Comforter",
+    "access": "on_request",
+    "hand": "connected",
+    "scripts": [
+      "Latin"
+    ]
+  },
+  {
+    "id": "comforter-brush",
+    "name": "Comforter Brush",
+    "access": "on_request",
+    "hand": "connected",
+    "scripts": [
+      "Latin"
+    ]
+  },
+  {
+    "id": "lobster",
+    "name": "Lobster",
+    "access": "on_request",
+    "hand": "connected",
+    "scripts": [
+      "Latin"
+    ]
+  },
+  {
+    "id": "playpen-sans",
+    "name": "Playpen Sans",
+    "access": "on_request",
+    "hand": "print",
+    "scripts": [
+      "Latin"
+    ]
+  },
+  {
+    "id": "playpen-sans-arabic",
+    "name": "Playpen Sans Arabic",
+    "access": "on_request",
+    "hand": "connected",
+    "scripts": [
+      "Arabic"
+    ]
+  },
+  {
+    "id": "playpen-sans-deva",
+    "name": "Playpen Sans Deva",
+    "access": "on_request",
+    "hand": "print",
+    "scripts": [
+      "Devanagari"
+    ]
+  },
+  {
+    "id": "aref-ruqaa",
+    "name": "Aref Ruqaa",
+    "access": "on_request",
+    "hand": "connected",
+    "scripts": [
+      "Arabic"
+    ]
+  },
+  {
+    "id": "ma-shan-zheng",
+    "name": "Ma Shan Zheng",
+    "access": "on_request",
+    "hand": "print",
+    "scripts": [
+      "Chinese"
+    ]
+  },
+  {
+    "id": "klee-one",
+    "name": "Klee One",
+    "access": "on_request",
+    "hand": "print",
+    "scripts": [
+      "Japanese"
+    ]
+  },
+  {
+    "id": "gaegu",
+    "name": "Gaegu",
+    "access": "on_request",
+    "hand": "print",
+    "scripts": [
+      "Korean"
+    ]
+  },
+  {
+    "id": "original-handwriting-01",
+    "name": "Original Handwriting 01",
+    "access": "on_request",
+    "hand": "print",
+    "scripts": [
+      "Latin"
+    ]
+  },
+  {
+    "id": "original-handwriting-02",
+    "name": "Original Handwriting 02",
+    "access": "on_request",
+    "hand": "connected",
+    "scripts": [
+      "Latin"
+    ]
+  },
+  {
+    "id": "original-handwriting-03",
+    "name": "Original Handwriting 03",
+    "access": "on_request",
+    "hand": "connected",
+    "scripts": [
+      "Latin"
+    ]
+  },
+  {
+    "id": "handwriting-04",
+    "name": "Handwriting 04",
+    "access": "on_request",
+    "hand": "connected",
+    "scripts": [
+      "Latin"
+    ]
+  },
+  {
+    "id": "handwriting-05",
+    "name": "Handwriting 05",
+    "access": "on_request",
+    "hand": "connected",
+    "scripts": [
+      "Latin"
+    ]
+  },
+  {
+    "id": "handwriting-06",
+    "name": "Handwriting 06",
+    "access": "on_request",
+    "hand": "connected",
+    "scripts": [
+      "Latin"
+    ]
+  },
+  {
+    "id": "willow-notes",
+    "name": "Willow Notes",
+    "access": "on_request",
+    "hand": "print",
+    "scripts": [
+      "Latin"
+    ]
+  },
+  {
+    "id": "paper-letters",
+    "name": "Paper Letters",
+    "access": "on_request",
+    "hand": "print",
+    "scripts": [
+      "Latin"
+    ]
+  },
+  {
+    "id": "trail-notes",
+    "name": "Trail Notes",
+    "access": "on_request",
+    "hand": "print",
+    "scripts": [
+      "Latin"
+    ]
+  },
+  {
+    "id": "coastal-notes",
+    "name": "Coastal Notes",
+    "access": "on_request",
+    "hand": "print",
+    "scripts": [
+      "Latin"
+    ]
+  },
+  {
+    "id": "library-notes",
+    "name": "Library Notes",
+    "access": "on_request",
+    "hand": "print",
+    "scripts": [
+      "Latin"
+    ]
+  },
+  {
+    "id": "little-note",
+    "name": "Little Note",
+    "access": "on_request",
+    "hand": "print",
+    "scripts": [
+      "Latin"
+    ]
+  },
+  {
+    "id": "notebook-maxwell-refined",
+    "name": "Notebook Maxwell Refined",
+    "access": "on_request",
+    "hand": "connected",
+    "scripts": [
+      "Latin"
+    ]
+  }
+]

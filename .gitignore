@@ -1,0 +1,16 @@
+node_modules
+dist
+.vitepress/dist
+.vitepress/cache
+apps/docs/public/openapi.yaml
+.DS_Store
+*.tsbuildinfo
+
+.wrangler/
+.env
+.env.*
+.env.keys
+*.pem
+*.key
+*.log
+coverage/

@@ -1,0 +1,42 @@
+{
+  "name": "handwriting-ai",
+  "version": "0.1.0",
+  "description": "Official client for the Handwriting AI text-to-handwriting API.",
+  "type": "module",
+  "license": "MIT",
+  "homepage": "https://handwriting-ai.com",
+  "bugs": {
+    "email": "support@handwriting-ai.com"
+  },
+  "keywords": [
+    "handwriting",
+    "handwriting-ai",
+    "text-to-handwriting"
+  ],
+  "engines": {
+    "node": ">=18"
+  },
+  "sideEffects": false,
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "test": "pnpm build && node --test test/client.test.mjs"
+  },
+  "devDependencies": {
+    "@types/node": "^24.10.1",
+    "typescript": "^5.9.3"
+  }
+}
