@@ -1,6 +1,12 @@
 # Handwriting AI docs and client
 
-This repository contains the Handwriting AI API documentation and the `handwriting-ai` Node.js client.
+Create handwritten notes, letters, and page images with [Handwriting AI](https://handwriting-ai.com).
+
+This repository contains the public API documentation and the `handwriting-ai` Node.js client.
+
+- [Website](https://handwriting-ai.com)
+- [API documentation](https://docs.handwriting-ai.com)
+- [Request API access](https://handwriting-ai.com/api-access)
 
 - `apps/docs` is the documentation site.
 - `packages/handwriting-ai` is the npm package.
